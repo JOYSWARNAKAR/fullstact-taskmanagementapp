@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema(
-  {  // debasish 
+  {  // joy
     name:{
       type:String,
       require:[true,"Name is Required"],
