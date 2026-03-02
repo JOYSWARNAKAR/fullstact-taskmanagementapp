@@ -2,3 +2,12 @@
 name :
 email: 
 password: 
+
+
+😒🥷🏻☕ Task postponed:
+
+1. add mongodb uri from mongodb atlas website
+2.  add this .env file .
+3.  testing the website. Is it working or not ?
+4. push to github
+5. try to deploy on render
