@@ -1,5 +1,0 @@
- // Create because of  my login remember purpose.😊✅👌⚡
- 
-  name: joy
-  email: joy1@gmail.com
-  password: 123456
