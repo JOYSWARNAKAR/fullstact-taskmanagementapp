@@ -1,19 +1,19 @@
 import { apiService } from './api';
 class TaskService {
   async getTasks() {
-    return await apiService.get('/tasks');
+    return await apiService.get('/api/tasks');
   }
   async createTask(taskData) {
-    return await apiService.post('/tasks', taskData);
+    return await apiService.post('/api/tasks', taskData);
   }
   async updateTask(taskId, taskData) {
-    return await apiService.put(`/tasks/${taskId}`, taskData);
+    return await apiService.put(`/api/tasks/${taskId}`, taskData);
   }
   async deleteTask(taskId) {
-    return await apiService.delete(`/tasks/${taskId}`);
+    return await apiService.delete(`/api/tasks/${taskId}`);
   }
   async toggleTaskComplete(taskId) {
-    return await apiService.put(`/tasks/${taskId}/toggle`);
+    return await apiService.put(`/api/tasks/${taskId}/toggle`);
   }
 }
 
