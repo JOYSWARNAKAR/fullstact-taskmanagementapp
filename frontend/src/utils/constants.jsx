@@ -1,6 +1,5 @@
 
-export const API_BASE_URL ='https://fullstact-taskmanagementapp.onrender.com';
-
+export const API_BASE_URL = import.meta.env.VITE_API_URL;
 export const TASK_STATUS = {
   PENDING: 'pending',
   IN_PROGRESS: 'in_progress',
