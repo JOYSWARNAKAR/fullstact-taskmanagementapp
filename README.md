@@ -300,27 +300,9 @@ npm test
 
 ---
 
-## 📝 License
-
-This project is licensed under the ISC License.
-
----
-
 ## 👨‍💻 Author
 
 **Joy Swarnkar**
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to fork this project and submit pull requests for any improvements.
-
----
-
-## 📞 Support
-
-For issues and questions, please open an issue in the repository.
 
 ---
 
