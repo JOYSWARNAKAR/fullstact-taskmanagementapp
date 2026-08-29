@@ -43,13 +43,29 @@ body {
   transition: background-color 0.2s;
 }
 
+button.btn {
+  font-family: inherit;
+  border: none;
+}
+
 .btn-primary {
   background-color: #007bff;
   color: white;
 }
 
-.btn-primary:hover {
+button.btn-primary:hover {
   background-color: #0056b3;
+  border-color: transparent;
+}
+
+a.btn {
+  text-decoration: none;
+  display: inline-block;
+}
+
+a.btn-primary,
+a.btn-primary:hover {
+  color: white;
 }
 
 .btn-secondary {
@@ -57,12 +73,27 @@ body {
   color: white;
 }
 
+button.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: transparent;
+}
+
 .btn-danger {
   background-color: #dc3545;
   color: white;
 }
 
+button.btn-danger:hover {
+  background-color: #c82333;
+  border-color: transparent;
+}
+
 .btn-success {
   background-color: #28a745;
-color:white;
+  color: white;
+}
+
+button.btn-success:hover {
+  background-color: #218838;
+  border-color: transparent;
 }

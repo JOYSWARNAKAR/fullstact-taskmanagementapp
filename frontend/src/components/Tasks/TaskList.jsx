@@ -1,10 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { taskService } from "../../services/taskService";
 import TaskForm from "./TaskForm";
 import TaskItem from "./TaskItem";
 import LoadingSpinner from "../Common/LoadingSpinner";
 import ErrorMessage from "../Common/ErrorMessage";
+import { TASK_STATUS } from "../../utils/constants";
 import "./Tasks.css";
+
+const FILTERS = [
+  { key: "all", label: "All" },
+  { key: TASK_STATUS.PENDING, label: "Pending" },
+  { key: TASK_STATUS.IN_PROGRESS, label: "In Progress" },
+  { key: TASK_STATUS.COMPLETED, label: "Completed" },
+];
 
 function TaskList() {
   const [tasks, setTasks] = useState([]);
@@ -12,6 +20,7 @@ function TaskList() {
   const [error, setError] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [editingTask, setEditingTask] = useState(null);
+  const [activeFilter, setActiveFilter] = useState("all");
 
   useEffect(() => {
     loadTasks();
@@ -69,18 +78,52 @@ function TaskList() {
   } catch (err) {
     setError('Failed to update task status');
   }
-};
+  };
+
+  const filterCounts = useMemo(() => {
+    return {
+      all: tasks.length,
+      [TASK_STATUS.PENDING]: tasks.filter((t) => t.status === TASK_STATUS.PENDING).length,
+      [TASK_STATUS.IN_PROGRESS]: tasks.filter((t) => t.status === TASK_STATUS.IN_PROGRESS).length,
+      [TASK_STATUS.COMPLETED]: tasks.filter((t) => t.status === TASK_STATUS.COMPLETED).length,
+    };
+  }, [tasks]);
+
+  const filteredTasks = useMemo(() => {
+    if (activeFilter === "all") return tasks;
+    return tasks.filter((task) => task.status === activeFilter);
+  }, [tasks, activeFilter]);
 
   if (loading) return <LoadingSpinner />;
 
   return (
     <div className="task-list-container">
-      <div className="task-header">
-        <h1>My Tasks</h1>
+      <div className="tasks-page-header">
+        <div>
+          <h1>My Tasks</h1>
+          <p className="tasks-subtitle">
+            {tasks.length} total · {filterCounts[TASK_STATUS.PENDING]} pending ·{" "}
+            {filterCounts[TASK_STATUS.COMPLETED]} completed
+          </p>
+        </div>
         <button className="btn btn-primary" onClick={() => setShowForm(true)}>
           Add New Task
         </button>
       </div>
+
+      <nav className="tasks-navbar" aria-label="Filter tasks">
+        {FILTERS.map(({ key, label }) => (
+          <button
+            key={key}
+            type="button"
+            className={`tasks-nav-btn ${activeFilter === key ? "active" : ""}`}
+            onClick={() => setActiveFilter(key)}
+          >
+            {label}
+            <span className="tasks-nav-count">{filterCounts[key]}</span>
+          </button>
+        ))}
+      </nav>
 
       {error && <ErrorMessage message={error} />}
 
@@ -100,12 +143,16 @@ function TaskList() {
       )}
 
       <div className="tasks-grid">
-        {tasks.length === 0 ? (
+        {filteredTasks.length === 0 ? (
           <div className="no-tasks">
-            <p>No tasks yet. Create your first task!</p>
+            <p>
+              {tasks.length === 0
+                ? "No tasks yet. Create your first task!"
+                : `No ${activeFilter === "all" ? "" : activeFilter.replace("_", " ")} tasks found.`}
+            </p>
           </div>
         ) : (
-          tasks.map((task) => (
+          filteredTasks.map((task) => (
             <TaskItem
               key={task._id || task.id}
               task={task}
@@ -121,4 +168,3 @@ function TaskList() {
 }
 
 export default TaskList;
-
