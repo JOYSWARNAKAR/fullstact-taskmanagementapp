@@ -1,0 +1,147 @@
+.docs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: calc(100vh - 140px);
+  padding: 2.5rem 1.5rem 3.5rem;
+}
+
+.docs-inner {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.docs-header {
+  text-align: left;
+  margin-bottom: 2.5rem;
+  width: 100%;
+}
+
+.docs-badge {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #007bff;
+  background-color: rgba(0, 123, 255, 0.08);
+  border-radius: 999px;
+}
+
+.docs-header h1 {
+  margin: 1rem 0 0.75rem;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: -0.02em;
+}
+
+.docs-header p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #5a6270;
+  max-width: 560px;
+}
+
+.docs-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.docs-section {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.25rem;
+  width: 100%;
+  padding: 1.75rem 2rem;
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  text-align: left;
+  transition: box-shadow 0.2s;
+}
+
+.docs-section:hover {
+  box-shadow: 0 8px 28px rgba(0, 123, 255, 0.1);
+}
+
+.docs-section-number {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #007bff;
+  background-color: rgba(0, 123, 255, 0.1);
+  border-radius: 50%;
+}
+
+.docs-section-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.docs-section-content h2 {
+  margin: 0 0 0.85rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.docs-section-content ol {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #5a6270;
+  line-height: 1.75;
+}
+
+.docs-section-content li + li {
+  margin-top: 0.5rem;
+}
+
+.docs-footer {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e9ecef;
+  text-align: left;
+  width: 100%;
+}
+
+.docs-footer p {
+  margin-bottom: 1rem;
+  color: #5a6270;
+  font-size: 1rem;
+}
+
+.docs-footer .btn-primary {
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .docs {
+    align-items: flex-start;
+    min-height: auto;
+    padding: 1.5rem 0.75rem 2.5rem;
+  }
+
+  .docs-section {
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 1.5rem 1.25rem;
+  }
+}

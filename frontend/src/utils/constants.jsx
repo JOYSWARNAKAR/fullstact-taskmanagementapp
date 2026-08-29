@@ -1,5 +1,8 @@
-
-export const API_BASE_URL ='https://fullstact-taskmanagementapp.onrender.com';
+// Vite picks the URL automatically:
+// - npm run dev  -> .env.development (localhost:5000)
+// - npm run build -> .env.production (Render)
+export const API_BASE_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 export const TASK_STATUS = {
   PENDING: 'pending',

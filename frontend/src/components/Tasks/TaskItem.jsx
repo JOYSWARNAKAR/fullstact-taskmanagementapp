@@ -39,7 +39,7 @@ function TaskItem({ task, onEdit, onDelete, onToggleComplete }) {
 
   return (
     <div className={`task-item ${getStatusClass(task.status)}`}>
-      <div className="task-header">
+      <div className="task-item-header">
         <h3 className="task-title">{task.title}</h3>
         <div className={`priority-badge ${getPriorityClass(task.priority)}`}>
           {task.priority}
@@ -82,4 +82,3 @@ function TaskItem({ task, onEdit, onDelete, onToggleComplete }) {
 }
 
 export default TaskItem;
-

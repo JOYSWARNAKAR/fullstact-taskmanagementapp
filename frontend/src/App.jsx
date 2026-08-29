@@ -6,11 +6,13 @@ import {
   Navigate,
 } from "react-router-dom";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
+import Home from "./components/Home/Home";
 import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import TaskList from "./components/Tasks/TaskList";
+import Docs from "./components/Docs/Docs";
 import "./App.css";
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -27,6 +29,8 @@ function App() {
           <Header />
           <main className="main-content">
             <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/docs" element={<Docs />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route

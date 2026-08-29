@@ -13,11 +13,10 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      // Verify token and get user info
       authService
-        .verifyToken(token)
-        .then((userData) => {
-          setUser(userData);
+        .verifyToken()
+        .then((data) => {
+          setUser(data.user);
         })
         .catch(() => {
           localStorage.removeItem("token");

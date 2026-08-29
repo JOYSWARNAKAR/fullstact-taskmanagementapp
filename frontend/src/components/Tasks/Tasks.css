@@ -4,16 +4,87 @@
     padding: 20px;
 }
 
-.task-header {
+.tasks-page-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 1.25rem;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-.task-header h1 {
-    color: #333;
+.tasks-page-header h1 {
+    color: #1a1a2e;
+    margin: 0 0 0.35rem;
+    font-size: 1.75rem;
+}
+
+.tasks-subtitle {
     margin: 0;
+    color: #5a6270;
+    font-size: 0.95rem;
+}
+
+.tasks-navbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.75rem;
+    padding: 0.35rem;
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.tasks-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #5a6270;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.tasks-nav-btn:hover {
+    background: rgba(0, 123, 255, 0.06);
+    color: #007bff;
+}
+
+.tasks-nav-btn.active {
+    background: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+}
+
+.tasks-nav-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.4rem;
+    padding: 0.1rem 0.45rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 999px;
+    background: #f1f3f5;
+    color: #5a6270;
+}
+
+.tasks-nav-btn.active .tasks-nav-count {
+    background: #007bff;
+    color: #fff;
+}
+
+.task-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
 }
 
 .tasks-grid {
@@ -37,13 +108,6 @@
 
 .task-item.status-completed {
     opacity: 0.7;
-}
-
-.task-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 10px;
 }
 
 .task-title {
@@ -120,12 +184,15 @@
     display: flex;
     gap: 8px;
     margin-top: 15px;
+    flex-wrap: wrap;
 }
 
 .task-actions .btn {
     flex: 1;
+    min-width: 80px;
     padding: 8px 12px;
     font-size: 14px;
+    color: white;
 }
 
 /* Task Form Styles */
@@ -205,4 +272,24 @@
 
 .no-tasks p {
     font-size:18px;
+}
+
+@media (max-width: 768px) {
+    .tasks-page-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tasks-page-header .btn-primary {
+        width: 100%;
+    }
+
+    .tasks-navbar {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+
+    .tasks-nav-btn {
+        flex-shrink: 0;
+    }
 }
